@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">OjekOnlineFirebase</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="email">Email :</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="link_signUp">Dont have account? SignUp</string>
+    <string name="or">Or</string>
+    <string name="signUp_Google">Sign Up with Google</string>
+    <string name="name">Username</string>
+    <string name="Hp">Phone Number</string>
+    <string name="Confirmpassword">Confirm Password</string>
+    <string name="SignUp">SignUp</string>
+    <string name="Welcome">Welcome to OjekOnline App</string>
+    <string name="hello">Hello!</string>
+    <string name="input_nohp">Inputkan nomor Hp</string>
+    <string name="title_history">history</string>
+    <string name="title_profile">profile</string>
+    <string name="nama">"Name : "</string>
+    <string name="zakia">zakia</string>
+    <string name="zakiagmail">zakiahasna.azzahra@gmail.com</string>
+    <string name="SignOut">Sign Out</string>
+    <string name="Cilengsi">Cilengsi, bogor</string>
+    <string name="from">From Where ?</string>
+    <string name="maukemana">Where are you going ?</string>
+    <string name="price">Price</string>
+    <string name="number">12.000</string>
+    <string name="estimasi_waktu">Estimasi waktu</string>
+    <string name="_3mnt">3 menit</string>
+    <string name="message">Message</string>
+    <string name="title_activity_maps">Map</string>
+</resources>

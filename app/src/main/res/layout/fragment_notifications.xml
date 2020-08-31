@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.notifications.NotificationsFragment">
+
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/iv_profile"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center|bottom"
+            android:scaleType="fitXY"
+            android:src="@drawable/user" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_fullname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/frame"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="@dimen/_20dp"
+        android:text="@string/nama"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/tv_profile_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_fullname"
+        android:layout_marginStart="40dp"
+        android:text="@string/zakia" />
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/tv_profile_name"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="@dimen/_10dp"
+        android:layout_marginEnd="@dimen/_10dp"
+        android:background="@android:color/darker_gray" />
+
+    <TextView
+        android:id="@+id/tv_fullemail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view1"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="@dimen/_20dp"
+        android:text="@string/email"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/tv_profile_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_fullemail"
+        android:layout_marginStart="40dp"
+        android:text="@string/zakiagmail" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/tv_profile_email"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="@dimen/_10dp"
+        android:layout_marginEnd="@dimen/_10dp"
+        android:background="@android:color/darker_gray" />
+
+    <TextView
+        android:id="@+id/tv_full_noHp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view2"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="@dimen/_20dp"
+        android:text="@string/Hp"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/tv_profile_hp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_full_noHp"
+        android:layout_marginStart="40dp"
+        android:text="@string/zakiagmail" />
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/tv_profile_hp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="@dimen/_10dp"
+        android:layout_marginEnd="@dimen/_10dp"
+        android:background="@android:color/darker_gray" />
+
+    <Button
+        android:id="@+id/btn_signOut"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/view3"
+        android:layout_marginStart="@dimen/_140dp"
+        android:layout_marginTop="@dimen/_30dp"
+        android:layout_marginEnd="140dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/SignOut" />
+</RelativeLayout>

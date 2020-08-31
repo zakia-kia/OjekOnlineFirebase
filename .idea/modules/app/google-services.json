@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "649367222307",
+    "firebase_url": "https://ojekonlinefirebase-bc5e1.firebaseio.com",
+    "project_id": "ojekonlinefirebase-bc5e1",
+    "storage_bucket": "ojekonlinefirebase-bc5e1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:649367222307:android:6ebecb1c16f204f9c1d996",
+        "android_client_info": {
+          "package_name": "com.zakia.idn.ojekonlinefirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "649367222307-8fh1klgobnqb7nvpo1qucetm78ejkge4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.zakia.idn.ojekonlinefirebase",
+            "certificate_hash": "22ff3b965407d5169f16e621ec47e64b77509c9c"
+          }
+        },
+        {
+          "client_id": "649367222307-67ercnniah3ptnoceb7stm7g8lllqb7o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDr-qjgDC_ooC0RrD8sm8LdpmIUql__-IU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "649367222307-67ercnniah3ptnoceb7stm7g8lllqb7o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
