@@ -41,6 +41,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.zakia.idn.ojekonlinefirebase.R
+import com.zakia.idn.ojekonlinefirebase.activity.WaitingDriverActivity
 import com.zakia.idn.ojekonlinefirebase.model.Booking
 import com.zakia.idn.ojekonlinefirebase.model.ResultRoute
 import com.zakia.idn.ojekonlinefirebase.model.RoutesItem
@@ -54,9 +55,14 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_maps.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import okhttp3.ResponseBody
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.support.v4.alert
+import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.lang.Exception
 import java.util.*
 import kotlin.collections.ArrayList
@@ -79,7 +85,10 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+          val view =  inflater.inflate(R.layout.fragment_home, container, false)
+          auth = FirebaseAuth.getInstance()
+
+        return view
     }
 
     //menapilkan maps ke fragment
@@ -101,7 +110,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
 
         showPermission()
         visibleView(false)
-//        keyy.let { bookingHistroryUser(it) }
+        keyy?.let { bookingHistroryUser(it) }
 
         tv_home_awal?.onClick { takeLocation(1) }
         tv_home_tujuan.onClick { takeLocation(2) }
@@ -188,8 +197,8 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         val k = keyy
 
         pushNotif(booking)
-//        k?.let { bookingHistroryUser(it) }
-//        myRef.child(keyy ?: "").setValue(booking)
+        k?.let { bookingHistroryUser(it) }
+        myRef.child(keyy ?: "").setValue(booking)
 
         return true
     }
@@ -210,6 +219,19 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
                     val request = RequestNotification()
                     request.token = token
                     request.sendNotificationModel = booking
+
+                    NetworkModule.getServiceFCM().sendChatNotification(request)
+                        .enqueue(object : retrofit2.Callback<ResponseBody> {
+                            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                                Log.d("network failed : ", t.message.toString())
+                            }
+
+                            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                                response.body()
+                                Log.d("response serve", response.message())
+                            }
+
+                        })
                 }
             }
         })
@@ -394,7 +416,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
 
     override fun onResume() {
         super.onResume()
-//        keyy?.let { bookingHistroryUser(it) }
+        keyy?.let { bookingHistroryUser(it) }
         map_view?.onResume()
     }
 
@@ -413,8 +435,42 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         map_view?.onLowMemory()
     }
 
-//    private fun bookingHistroryUser(it: String): Any {
-//
-//    }
+    private fun bookingHistroryUser(key: String) {
+        showDialog(true)
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.getReference(Constan.tb_booking)
+
+        myRef.child(key).addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val booking = snapshot.getValue(Booking::class.java)
+                if (booking?.driver != "" ) {
+                    startActivity<WaitingDriverActivity>(Constan.key to key)
+                    showDialog(false)
+                }
+            }
+
+        })
+    }
+
+    private fun showDialog(status: Boolean) {
+        dialog = Dialog(activity!!)
+        dialog?.setContentView(R.layout.dialogwaitingdriver)
+        if (status) {
+            dialog?.show()
+        } else dialog?.dismiss()
+
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if (requestCode == 1 ) {
+            showGps()
+        }
+    }
 
 }
